@@ -1,4 +1,6 @@
-// ignore_for_file: avoid_unnecessary_containers, unnecessary_import, implementation_imports
+// ignore_for_file: unnecessary_import, duplicate_ignore, avoid_unnecessary_containers, implementation_imports
+
+// ignore_for_file: unnecessary_import
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,11 +22,27 @@ class DoneTsaksScreen extends StatelessWidget {
       },
       builder:(context , state) {
         var tasks = AppCubit().get(context).doneTasks;
-        return tasksBuilder(tasks: tasks);
+        return ListView.separated(
+        
+        itemBuilder: ((context, index) {
+          
+          return   buildTaskItem(tasks[index]);
+        }
+        ), 
+        separatorBuilder:(context,index){
+          return      
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 20.0),
+            child: Container(
+              width:double.infinity,
+              height: 1.0,
+              color:Colors.grey ,
+            ),
+          );
+        } , 
+       itemCount: tasks.length,
+      );
       }
     );
-
-
-      
   }
 }

@@ -26,7 +26,7 @@ class ArchiveTsaksScreen extends StatelessWidget {
         
         itemBuilder: ((context, index) {
           
-          return   buildTaskItem(tasks[index],context);
+          return   buildTaskItem(tasks[index]);
         }
         ), 
         separatorBuilder:(context,index){
